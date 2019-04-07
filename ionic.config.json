@@ -1,0 +1,12 @@
+{
+  "name": "mfg365",
+  "integrations": {},
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ],
+  "id": "592dd2c9"
+}
