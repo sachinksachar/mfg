@@ -1,6 +1,8 @@
 {
   "name": "mfg365",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic1",
   "watchPatterns": [
     "scss/**/*",

@@ -1,0 +1,111 @@
+<ion-content scroll="true">
+  <div class="content">
+    <div class="container page-sitemap">
+
+      <div class="row">
+        <div align="center" class="logo_margin">
+          <img src='img/logo.png' width="30%">
+        </div>
+      </div>
+      <div class="row row-margin">
+
+        <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
+          <ion-slide>
+            <form name="Loginform" novalidate="true" ng-submit="Loginform.$valid && Login()">
+              <div class="list">
+                <div>
+                  <label class="item item-input item-floating-label">
+                    <span class="input-label">Email / Phone</span>
+                    <input placeholder="Email" id="useremail" required="true" type="text" name="email" ng-model="user.email">
+                  </label>
+                  <span class="span-error" ng-show="Loginform.email.$touched || Loginform.$submitted && Loginform.email.$invalid">
+                    <span ng-show="Loginform.email.$touched && Loginform.email.$invalid || Loginform.email.$error.required" class="error_css">Email / Phone No is required</span>
+                  </span>
+                </div>
+
+                <div>
+                  <label class="item item-input item-floating-label">
+                    <span class="input-label">Password</span>
+                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="user.password">
+                  </label>
+                  <span class="span-error" ng-show="Loginform.login_password.$touched || Loginform.$submitted && Loginform.login_password.$invalid">
+                    <span ng-show="Loginform.login_password.$touched && Loginform.login_password.$invalid || Loginform.login_password.$error.required"
+                      class="error_css">Password is required</span>
+                  </span>
+                </div>
+                <div class="btn-center">
+                  <button class="button button-block btn-color-orange btn-size">
+                    Signin
+                  </button>
+                </div>
+              </div>
+            </form>
+          </ion-slide>
+          <ion-slide>
+            <form name="registerform" novalidate="true" ng-submit="registerform.$valid && register()">
+              <div class="list">
+
+                <div>
+                  <label class="item item-input item-floating-label">
+                    <span class="input-label">Name</span>
+                    <input placeholder="Name" id="uname" required="true" type="text" name="uname" ng-model="user.uname">
+                  </label>
+                  <span class="span-error" ng-show="registerform.uname.$touched || registerform.$submitted && registerform.uname.$invalid">
+                    <span ng-show="registerform.uname.$touched && registerform.uname.$invalid || registerform.uname.$error.required" class="error_css">Name is required</span>
+                  </span>
+                </div>
+
+
+                <div>
+                  <label class="item item-input item-floating-label">
+                    <span class="input-label">Email</span>
+                    <input placeholder="Email" id="useremail" required="true" type="email" name="email" ng-model="user.email">
+                  </label>
+                  <span class="span-error" ng-show="registerform.email.$touched || registerform.$submitted && registerform.email.$invalid">
+                    <span ng-show="registerform.email.$touched && registerform.email.$invalid || registerform.email.$error.required" class="error_css">Email is Required</span>
+                  </span>
+                </div>
+
+                <div>
+                  <label class="item item-input item-floating-label">
+                    <span class="input-label">Mobile No</span>
+                    <input placeholder="Mobile No" id="phone" required="true" type="tel" name="phone" ng-model="user.phone">
+                  </label>
+                  <span class="span-error" ng-show="registerform.phone.$touched || registerform.$submitted && registerform.phone.$invalid">
+                    <span ng-show="registerform.phone.$touched && registerform.phone.$invalid || registerform.phone.$error.required" class="error_css">Mobile No is required</span>
+                  </span>
+                </div>
+
+                <div>
+                  <label class="item item-input item-floating-label">
+                    <span class="input-label">Password</span>
+                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="user.password">
+                  </label>
+                  <span class="span-error" ng-show="registerform.login_password.$touched || registerform.$submitted && registerform.login_password.$invalid">
+                    <span ng-show="registerform.login_password.$touched && registerform.login_password.$invalid || registerform.login_password.$error.required"
+                      class="error_css">Password required</span>
+                  </span>
+                </div>
+
+                <div>
+                  <label class="item item-input item-floating-label">
+                    <span class="input-label">Referal Code</span>
+                    <input placeholder="Referal Code" id="referalcode" type="text" name="referal" ng-model="user.referal">
+                  </label>
+                </div>
+
+                <div class="btn-center">
+                  <button class="button button-block btn-color-orange btn-size">
+                    Signup
+                  </button>
+                </div>
+              </div>
+            </form>
+          </ion-slide>
+        </ion-slide-box>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</ion-content>
