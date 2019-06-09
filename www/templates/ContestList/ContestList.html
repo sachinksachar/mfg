@@ -1,0 +1,52 @@
+<ion-view>
+    <ion-nav-bar class="bar-assertive bar-orange">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear  ion-arrow-left-c  " ng-click="backButton()"></button>
+            <div class="title title-left header-item">MFG365</div>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="content-bg" style="top: 40px">
+        <div class="im-wrapper">
+            <h4 class="heading-text"> Contest List</h4>
+            <div class="list card list-bg" ng-repeat="contestlist in contestList.contests">
+                <div class="item item-body" style="padding: 5px">
+                    <div class="row row-btm">
+                        <h3 class="contest-name">{{contestlist.name}}</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-50">
+                            <div class="prize-left">
+                                <p class="p-text">Prize Pool</p>
+                                <h2 class="h2-text">
+                                    <i class="fa fa-inr" aria-hidden="true"></i> {{contestlist.prize}}</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-50">
+                            <div class="entry-right">
+                                <p class="p-text" style="float: right;">Enrty</p>
+                                <br/>
+                                <div class="label success amt-label">
+                                    <i class="fa fa-inr" aria-hidden="true"></i> {{contestlist.maxEntry}}</div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100" style="width: 75%"></div>
+                    </div>
+                    <span class="spots-left">12,000 spots left</span>
+                    <span class="spots-right">50,000 spots</span>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+
+    <!-- <div class="bar bar-footer bar-balanced">
+        <button class="button">Left</button>
+        <button class="button">Right</button>
+      </div> -->
+</ion-view>

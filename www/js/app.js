@@ -1,4 +1,4 @@
-var app = angular.module('mfg', ['ionic', 'ionic-material', 'oc.lazyLoad']);
+var app = angular.module('mfg', ['ionic', 'ionic-material', 'oc.lazyLoad','ion-floating-menu']);
 
 app.run(function ($ionicPlatform, AuthService) {
     $ionicPlatform.ready(function () {
@@ -11,15 +11,18 @@ app.run(function ($ionicPlatform, AuthService) {
     });
 })
 
+
+
 app.factory('AuthService', [
     '$location', '$window', '$http', '$state', '$stateParams',
     function ($location, $window, $http, $state, $stateParams) { 
         
+        
         if (localStorage.authKey == undefined && localStorage.token == undefined) {
             $state.go('login');
         }
-        else {
-            $http.defaults.headers.common.Authorization = 'Bearer'+ localStorage.token;
+        else { 
+            $http.defaults.headers.common.Authorization = 'Bearer '+ localStorage.token;
             $http.defaults.headers.common.appKey = localStorage.authKey;
         }
         return 0;
@@ -45,6 +48,23 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }]
             }
 
+        })
+
+        .state('contestCategory', {
+            cache: false,
+            url: '/contestCategory',
+            templateUrl: 'templates/ContestCategory/ContestCategory.html',
+            controller: 'contestCategoryCtrl',
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: "mfg",
+                        files: [
+                            'js/components/ContestCategory/contestCategoryController.js'
+                        ]
+                    });
+                }]
+            }
         })
 
 
@@ -155,7 +175,65 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     return $ocLazyLoad.load({
                         name: "mfg",
                         files: [
-                            'js/components/myMatches/MyMatchesCtrl.js'
+                            'js/components/myMatches/MyMatchesController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+
+
+        .state('app.dashboardMatches', {
+            url: '/dashboardMatches',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/Matches/dashboardMatches.html',
+                    controller: 'dashboardMatchesCtrl'
+                }
+            },
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: "mfg",
+                        files: [
+                            'js/components/Matches/dashboardMatchesController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+
+
+
+
+        .state('contestList', {
+            cache: false,
+            url: '/contestList',
+            templateUrl: 'templates/ContestList/ContestList.html',
+            controller: 'contestListCtrl',
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: "mfg",
+                        files: [
+                            'js/components/ContestList/contestListController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+
+        .state('newTeam', {
+            cache: false,
+            url: '/newTeam',
+            templateUrl: 'templates/Teams/newTeam.html',
+            controller: 'newTeamCtrl',
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: "mfg",
+                        files: [
+                            'js/components/Teams/newTeamController.js'
                         ]
                     });
                 }]
@@ -171,6 +249,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/login');
       }
       else if (localStorage.authKey != undefined && localStorage.token != undefined) {
-        $urlRouterProvider.otherwise('/app/components');
+        $urlRouterProvider.otherwise('/app/dashboardMatches');
       }
 });

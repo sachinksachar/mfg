@@ -1,0 +1,22 @@
+<ion-view>
+    <ion-nav-bar class="bar-assertive bar-orange">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear  ion-arrow-left-c  " ng-click="backButton()"></button>
+            <div class="title title-left header-item">MFG365</div>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-floating-button click="createTeam()" has-footer="false" text="Create a Team" text-class="ionic_float_label" button-color="#ff6700" icon="ion-plus" icon-color="#fff">
+    </ion-floating-button>
+
+    <ion-content class="content-bg" style="top: 40px">
+        <div class="im-wrapper">
+            <h4 class="heading-text"> Contest Levels</h4>
+            <div class="list card list-bg" ng-repeat="level in contestLevels.levels" ng-click="showContestList(level.levelCode)">
+                <div class="item item-body">
+                    <h2 class="level-h2">{{level.level}}</h2>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

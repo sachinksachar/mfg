@@ -1,19 +1,27 @@
-﻿
-<ion-side-menus enable-menu-with-back-views="false">
+﻿<ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content>
-        <ion-nav-bar class="bar-assertive">
+        <ion-nav-bar class="bar-assertive bar-orange">
             <ion-nav-back-button class="no-text">
             </ion-nav-back-button>
             <ion-nav-buttons side="left">
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+
+
+                <h6 class="games-text">{{games.games[0].name}}</h6>
+
+                <!-- <div>
+                        <select class="dropdown-header" ng-model="selectedGame" ng-if="games.count > 1">
+                            <option ng-repeat="game in games.games">{{game.name}}</option>
+                        </select>
+                    </div> -->
             </ion-nav-buttons>
+
+
             <ion-nav-buttons side="right">
-                <button class="button button-icon button-clear ion-android-more-vertical" id="menu-popover" ng-click="popover.show($event)"></button>
+                <button class="button button-icon button-clear ion-ios-bell-outline"></button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <button id="fab" class="button button-positive button-fab button-fab-bottom-right">
-            <i class="icon ion-social-twitter"></i>
-        </button>
+
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
     <ion-side-menu side="left">
@@ -25,7 +33,7 @@
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
-                <ion-item nav-clear menu-close href="#/app/components">
+                <!-- <ion-item nav-clear menu-close href="#/app/components">
                     Components+
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/extensions">
@@ -44,6 +52,14 @@
                 <ion-item nav-clear menu-close href="#/app/myMatches">
                     MyMatches
                 </ion-item>
+
+                <ion-item nav-clear menu-close href="#/app/dashboardMatches">
+                    Matches
+                </ion-item>
+
+                <ion-item nav-clear menu-close href="#/contestCategory">
+                    Contest Category
+                </ion-item> -->
 
                 <ion-item nav-clear menu-close ui-sref="login">
                     Login
