@@ -213,8 +213,8 @@ margin-top:10px;
 }
 
 .btn-color-orange{
-    border-color: #f38111 !important;
-    background-color: #f38111 !important;
+    border-color: #ff6700 !important;
+    background-color: #ff6700 !important;
     color: #fff !important;
 }
 .btn-size{
@@ -242,7 +242,7 @@ margin-top:10px;
     }
 
 .active { 
-  border-bottom: 4px solid #f38111 ! important;
+  border-bottom: 4px solid #ff6700 ! important;
    background: #fff ! important;
    color: black ! important; 
    font-weight: 600;
@@ -259,11 +259,11 @@ margin-top:10px;
 
 .checkbox input:before, .checkbox-icon:before {
     border-radius: 0px ! important;
-    border-color: #f38111 ! important;
+    border-color: #ff6700 ! important;
 }
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
-    background: #f38111 ! important;
-    border-color: #f38111 ! important;
+    background: #ff6700 ! important;
+    border-color: #ff6700 ! important;
 }
 
 .tabs-striped.tabs-calm .tabs {
@@ -274,16 +274,169 @@ margin-top:10px;
 }
 .tabs-striped.tabs-calm .tab-item.tab-item-active, .tabs-striped.tabs-calm .tab-item.active, .tabs-striped.tabs-calm .tab-item.activated {
     margin-top: -2px;
-    color: #f38111;
+    color: #ff6700;
     border-style: solid;
     border-width: 2px 0 0 0;
-    border-color: #f38111;
+    border-color: #ff6700;
 }
 .tabs-striped.tabs-calm .tab-item {
-    color: #f38111;
+    color: #ff6700;
 }
 .scroll-bar-indicator {
     background: rgb(255, 255, 255) ! important;
 }
+.img-avatar{
+    border-radius: 50%;
+    left: 16px;
+    max-height: 40px ! important;
+    max-width: 40px ! important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.col-md-20{
+    flex: 0 0 20% ! important;
+      max-width:20% ! important;
+  }
+  .col-md-30{
+    flex: 0 0 30% ! important;
+      max-width:30% ! important;
+  }
+  .col-md-15{
+    flex: 0 0 15% ! important;
+      max-width:15% ! important;
+  }
+
+  .col-md-50{
+    flex: 0 0 50% ! important;
+      max-width:50% ! important;
+  }
+
+.list-bg{
+    margin: 0px ! important;
+    background: #fff ! important;
+    margin-bottom: 10px ! important;
+}
+.team-left{
+    text-align: left ! important;
+    margin-top: 25% ! important;
+    color: black;
+    font-weight: 600;
+    font-size: 12px;
+}
+.team-right{
+    text-align: right ! important;
+    margin-top: 25% ! important;
+    color: black;
+    font-weight: 600;
+    font-size: 12px;
+}
+.time-count{
+    text-align: center ! important;
+    color: red ! important;
+    font-weight: 600 ! important;
+    margin-top: 12% ! important;
+    font-size: 12px;
+}
+h4.heading-text{
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+}
+.content-bg{
+    background: #f1f1f1  ! important;
+}
   
+.title-left, .title-right, .title.title-left, .title.title-right {
+    left: 40px ! important;
+}
+.dropdown-header{
+    margin-left: 100px ! important;
+    background: #ff6700 ! important;
+    border: 1px solid white ! important;
+    padding: 0px ! important;
+    color: white ! important;
+    height: 25px ! important;
+    margin-top: 10px ! important;
+}
+.games-text{
+    margin-left: 100px ! important;
+    color: white ! important;
+    margin-top: 7% ! important;
+}
+.level-h2{
+    margin-top: 0px ! important;
+    text-align: center ! important;
+    color: black ! important;
+    font-weight: 600 ! important;
+}
+.bar-orange{
+    border-color: #ff6700 ! important;
+    background: #ff6700 ! important;
+}
+.p-text{
+    margin: 0px 0px 5px 0px! important;
+    font-size: 11px ! important;
+}
+.h2-text{
+    font-size: 22px ! important;
+    font-weight: 600 ! important;
+    color: black ! important;
+    margin-top: 5px ! important;
+}
+.label {
+    color: white;
+    padding: 8px;
+    font-family: Arial;
+  }
+  .success {background-color: #33cd5f;}
+  .amt-label{
+    border-radius: 5px ! important;
+    padding: 5px 25px ! important;
+  }
+  .contest-name{
+    font-size: 19px ! important;
+    margin-top: 0px ! important;
+    text-transform: capitalize ! important;
+    color: #ff6700 ! important;
+  }
+  .row-btm{
+    border-bottom: 1px solid #ccc ! important;
+    margin-bottom: 5px ! important;
+  }
+  .row{
+    margin-right: 0px ! important;
+    margin-left: 0px ! important;
+  }
+  .progress-bar{
+    background-color: #ff6700 ! important;
+  }
+  .progress{
+      height: 0.5rem ! important;
+  }
+  .spots-right{
+    float: right ! important;
+    font-size: 11px ! important;
+    color: #28a54c ! important;
+    padding-top: 3px ! important;
+  }
+  .spots-left{
+    color: #ff6700 ! important;
+    font-size: 11px ! important;
+  }
+  .prize-left{
+    padding: 5px; 
+    float: left
+  }
+  .entry-right{
+    padding: 5px; 
+    float: right
+  }
+
+  .ionic_float_label{
+    color: white ! important;
+    background: #ff6700 ! important;
+    text-transform: capitalize ! important;
+    font-size: 10px ! important;
+  }

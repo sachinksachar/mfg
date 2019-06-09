@@ -1,38 +1,27 @@
-﻿app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout) {
-    // Form data for the login modal
-    $scope.loginData = {};
+﻿app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout, $http) {
+    $scope.games = {};
 
-    var navIcons = document.getElementsByClassName('ion-navicon');
-    for (var i = 0; i < navIcons.length; i++) {
-        navIcons.addEventListener('click', function () {
-            this.classList.toggle('active');
-        });
-    }
+    $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.token;
+    $http.defaults.headers.common.appKey = localStorage.authKey;
 
-    var fab = document.getElementById('fab');
-    fab.addEventListener('click', function () {
-        //location.href = 'https://twitter.com/satish_vr2011';
-        window.open('https://twitter.com/satish_vr2011', '_blank');
-    });
+    
+    $http({
+        url: __env.apiUrl + '/api/games',
+        method: "GET",
+        headers: { 'Content-Type': 'application/json' }
+      }).then(function (response) { 
+        $scope.games = response.data;
+        $scope.selectedGame = { value: "" };
 
-    // .fromTemplate() method
-    var template = '<ion-popover-view>' +
-                    '   <ion-header-bar>' +
-                    '       <h1 class="title">My Popover Title</h1>' +
-                    '   </ion-header-bar>' +
-                    '   <ion-content class="padding">' +
-                    '       My Popover Contents' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
+      }, function (error) {
+        
+  
+      });
 
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
-    });
-    $scope.closePopover = function () {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function () {
-        $scope.popover.remove();
-    });
+      $scope.changeGame = function(game){
+        
+      }
+
+
+
 });

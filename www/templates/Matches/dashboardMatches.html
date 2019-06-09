@@ -1,0 +1,31 @@
+<ion-view view-title="MFG365">
+    <ion-content class="content-bg">
+        <div class="im-wrapper">
+            <h4 class="heading-text"> Upcoming Matches</h4>
+            <div class="list card list-bg" ng-repeat="match in matches">
+                <div class="item item-body">
+                    {{match.series}}
+                </div>
+                <div class="row" ng-click="showContestCategory(match.matchCode)">
+                    <div class="col-md-20">
+                        <img src="img/temp/CSK.png" class="img-avatar" style="background:yellow;">
+                    </div>
+                    <div class="col-md-15">
+                        <p class="team-left">{{match.team1.name}}</p>
+                    </div>
+                    <div class="col-md-30">
+                        <p class="time-count">{{match.matchTime}}</p>
+                    </div>
+                    <div class="col-md-15">
+                        <p class="team-right">{{match.team2.name}}</p>
+                    </div>
+                    <div class="col-md-20">
+                        <img src="img/temp/BRC.png" class="img-avatar" style="background: #ef473a;">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </ion-content>
+</ion-view>
