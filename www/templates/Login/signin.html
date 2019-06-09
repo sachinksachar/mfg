@@ -7,16 +7,26 @@
           <img src='img/logo.png' width="30%">
         </div>
       </div>
-      <div class="row row-margin">
 
-        <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
-          <ion-slide>
-            <form name="Loginform" novalidate="true" ng-submit="Loginform.$valid && Login()">
+      <ion-tabs class="tabs-calm tabs-icon-only" style="top: 20%">
+        <ion-tab title="Signin" ng-click="setSlide(0);">
+        </ion-tab>
+        <ion-tab title="Signup" ng-click="setSlide(1);">
+        </ion-tab>
+      </ion-tabs>
+      <div class="row row-margin" style="margin-top: 40px;">
+
+          <ion-slide-box show-pager="false" on-slide-changed="slideChanged(index)" active-slide="activeSlide">
+              <ion-slide>
+
+        <!-- <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
+          <ion-slide> -->
+            <form name="Loginform" novalidate="true" ng-submit="Loginform.$valid && Login(user)">
               <div class="list">
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Email / Phone</span>
-                    <input placeholder="Email" id="useremail" required="true" type="text" name="email" ng-model="user.email">
+                    <input placeholder="Email" id="useremail" required="true" type="text" name="email" ng-model="user.username">
                   </label>
                   <span class="span-error" ng-show="Loginform.email.$touched || Loginform.$submitted && Loginform.email.$invalid">
                     <span ng-show="Loginform.email.$touched && Loginform.email.$invalid || Loginform.email.$error.required" class="error_css">Email / Phone No is required</span>
@@ -26,7 +36,7 @@
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Password</span>
-                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="user.password">
+                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="user.passwd">
                   </label>
                   <span class="span-error" ng-show="Loginform.login_password.$touched || Loginform.$submitted && Loginform.login_password.$invalid">
                     <span ng-show="Loginform.login_password.$touched && Loginform.login_password.$invalid || Loginform.login_password.$error.required"
@@ -42,13 +52,13 @@
             </form>
           </ion-slide>
           <ion-slide>
-            <form name="registerform" novalidate="true" ng-submit="registerform.$valid && register()">
+            <form name="registerform" novalidate="true" ng-submit="registerform.$valid && register(registerUser)">
               <div class="list">
 
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Name</span>
-                    <input placeholder="Name" id="uname" required="true" type="text" name="uname" ng-model="user.uname">
+                    <input placeholder="Name" id="uname" required="true" type="text" name="uname" ng-model="registerUser.uname">
                   </label>
                   <span class="span-error" ng-show="registerform.uname.$touched || registerform.$submitted && registerform.uname.$invalid">
                     <span ng-show="registerform.uname.$touched && registerform.uname.$invalid || registerform.uname.$error.required" class="error_css">Name is required</span>
@@ -59,7 +69,7 @@
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Email</span>
-                    <input placeholder="Email" id="useremail" required="true" type="email" name="email" ng-model="user.email">
+                    <input placeholder="Email" id="useremail" required="true" type="email" name="email" ng-model="registerUser.email">
                   </label>
                   <span class="span-error" ng-show="registerform.email.$touched || registerform.$submitted && registerform.email.$invalid">
                     <span ng-show="registerform.email.$touched && registerform.email.$invalid || registerform.email.$error.required" class="error_css">Email is Required</span>
@@ -69,7 +79,7 @@
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Mobile No</span>
-                    <input placeholder="Mobile No" id="phone" required="true" type="tel" name="phone" ng-model="user.phone">
+                    <input placeholder="Mobile No" id="phone" required="true" type="tel" name="phone" ng-model="registerUser.mobile">
                   </label>
                   <span class="span-error" ng-show="registerform.phone.$touched || registerform.$submitted && registerform.phone.$invalid">
                     <span ng-show="registerform.phone.$touched && registerform.phone.$invalid || registerform.phone.$error.required" class="error_css">Mobile No is required</span>
@@ -79,7 +89,7 @@
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Password</span>
-                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="user.password">
+                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="registerUser.passwd">
                   </label>
                   <span class="span-error" ng-show="registerform.login_password.$touched || registerform.$submitted && registerform.login_password.$invalid">
                     <span ng-show="registerform.login_password.$touched && registerform.login_password.$invalid || registerform.login_password.$error.required"
@@ -90,9 +100,20 @@
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Referal Code</span>
-                    <input placeholder="Referal Code" id="referalcode" type="text" name="referal" ng-model="user.referal">
+                    <input placeholder="Referal Code" id="referalcode" type="text" name="referal" ng-model="registerUser.refcode">
                   </label>
                 </div>
+
+                <div class="item item-checkbox">
+                  <label class="checkbox">
+                    <input type="checkbox" ng-model="registerUser.tandc" name="terms" required />
+                  </label>
+                  I accept the terms &amp; conditions.
+                </div>
+                <span class="span-error" ng-show="registerform.terms.$touched || registerform.$submitted && registerform.terms.$invalid">
+                    <span ng-show="registerform.terms.$touched && registerform.terms.$invalid || registerform.terms.$error.required"
+                      class="error_css">Terms & Conditions is required</span>
+                  </span>
 
                 <div class="btn-center">
                   <button class="button button-block btn-color-orange btn-size">
