@@ -271,6 +271,7 @@ margin-top:10px;
     top: 20% ! important;
     border-bottom: none ! important;
     box-shadow: none ! important;
+    position: inherit;
 }
 .tabs-striped.tabs-calm .tab-item.tab-item-active, .tabs-striped.tabs-calm .tab-item.active, .tabs-striped.tabs-calm .tab-item.activated {
     margin-top: -2px;
@@ -311,6 +312,11 @@ margin-top:10px;
   .col-md-50{
     flex: 0 0 50% ! important;
       max-width:50% ! important;
+  }
+
+  .col-md-35{
+    flex: 0 0 35% ! important;
+      max-width:35% ! important;
   }
 
 .list-bg{
@@ -440,3 +446,30 @@ h4.heading-text{
     text-transform: capitalize ! important;
     font-size: 10px ! important;
   }
+  .player_name{
+    font-size: 12px ! important;
+    font-weight: 600 ! important;
+    padding-top: 5px ! important;
+    text-transform: capitalize ! important;
+    margin-bottom: 1px ! important;
+  }
+  .player_type{
+      font-size: 11px ! important;
+      color: #696666 ! important;
+      margin-bottom: 1px ! important;
+  }
+  .player_point{
+    text-align: center ! important;
+    margin-top: 25% ! important;
+    color: black;
+    font-weight: 600;
+    font-size: 12px;
+}
+.heading-margin{
+    margin-top: 15px;
+}
+.h5-player{
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+}

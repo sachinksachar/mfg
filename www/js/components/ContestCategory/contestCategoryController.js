@@ -28,7 +28,6 @@ angular.module('mfg').controller('contestCategoryCtrl', ['$http', '$scope', '$st
           }
 
           // create a team
-
           $scope.createTeam = function(){
               $state.go('newTeam');
           }
