@@ -50,7 +50,7 @@ angular.module('mfg').controller('loginCtrl', ['$http', '$scope', '$state', '$st
     // Login starts from here
     $scope.user = {}
     $scope.Login = function (user) {
-
+      debugger;
       $scope.loadingEvent();
 
       $http({
