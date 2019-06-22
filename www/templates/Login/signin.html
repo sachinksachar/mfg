@@ -14,33 +14,44 @@
         <ion-tab title="Signup" ng-click="setSlide(1);">
         </ion-tab>
       </ion-tabs>
-      <div class="row row-margin" style="margin-top: 65px;">
+      <div class="row row-margin" style="margin-top: 0px;">
 
-          <ion-slide-box show-pager="false" on-slide-changed="slideChanged(index)" active-slide="activeSlide">
-              <ion-slide>
+        <ion-slide-box show-pager="false" on-slide-changed="slideChanged(index)" active-slide="activeSlide">
+          <ion-slide>
 
-        <!-- <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
+            <!-- <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
           <ion-slide> -->
             <form name="Loginform" novalidate="true" ng-submit="Loginform.$valid && Login(user)">
               <div class="list">
                 <div>
                   <label class="item item-input item-floating-label">
-                    <span class="input-label">Email / Phone</span>
-                    <input placeholder="Email" id="useremail" required="true" type="text" name="email" ng-model="user.username">
+                    <span class="input-label">Email / Mobile No.</span>
+                    <input placeholder="Email / Mobile No." id="useremail" required="true" type="text" name="email" ng-model="user.username"
+                      ng-pattern="emailphoneRE">
                   </label>
-                  <span class="span-error" ng-show="Loginform.email.$touched || Loginform.$submitted && Loginform.email.$invalid">
-                    <span ng-show="Loginform.email.$touched && Loginform.email.$invalid || Loginform.email.$error.required" class="error_css">Email / Phone No is required</span>
+                  <span class="span-error" ng-show="!Loginform.email.$touched">
+                    <span class="error_css" ng-show="Loginform.$submitted && Loginform.email.$error.required"> Email / Mobile No is Required! </span>
+                  </span>
+                  <span class="span-error" ng-show="Loginform.email.$touched">
+                    <span ng-show="Loginform.email.$touched && Loginform.email.$error.pattern && Loginform.email.$invalid || Loginform.email.$error.required "
+                      class="error_css">Email / 10 digit Mobile No.</span>
                   </span>
                 </div>
 
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Password</span>
-                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="user.passwd">
+                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="user.passwd"
+                      ng-pattern="passwordRE" min="8" minlength="8">
                   </label>
-                  <span class="span-error" ng-show="Loginform.login_password.$touched || Loginform.$submitted && Loginform.login_password.$invalid">
-                    <span ng-show="Loginform.login_password.$touched && Loginform.login_password.$invalid || Loginform.login_password.$error.required"
-                      class="error_css">Password is required</span>
+
+                  <span class="span-error" ng-show="!Loginform.login_password.$touched">
+                    <span class="error_css" ng-show="Loginform.$submitted && Loginform.login_password.$error.required"> Password is Required! </span>
+                  </span>
+
+                  <span class="span-error" ng-show="Loginform.login_password.$touched">
+                    <span ng-show="Loginform.login_password.$touched && Loginform.login_password.$error.pattern && Loginform.login_password.$invalid || Loginform.login_password.$error.required "
+                      class="error_css">Password should be min 8 character, including number,alphabets and special character</span>
                   </span>
                 </div>
                 <div class="btn-center">
@@ -57,11 +68,17 @@
 
                 <div>
                   <label class="item item-input item-floating-label">
-                    <span class="input-label">Name</span>
-                    <input placeholder="Name" id="uname" required="true" type="text" name="uname" ng-model="registerUser.uname">
+                    <span class="input-label">Username</span>
+                    <input placeholder="Username" id="uname" required="true" type="text" name="uname" ng-model="registerUser.uname" ng-pattern="usernameRE">
                   </label>
-                  <span class="span-error" ng-show="registerform.uname.$touched || registerform.$submitted && registerform.uname.$invalid">
-                    <span ng-show="registerform.uname.$touched && registerform.uname.$invalid || registerform.uname.$error.required" class="error_css">Name is required</span>
+
+                  <span class="span-error" ng-show="!registerform.uname.$touched">
+                    <span class="error_css" ng-show="registerform.$submitted && registerform.uname.$error.required">Username is Required! </span>
+                  </span>
+
+                  <span class="span-error" ng-show="registerform.uname.$touched">
+                    <span ng-show="registerform.uname.$touched && registerform.uname.$error.pattern && registerform.uname.$invalid || registerform.uname.$error.required "
+                      class="error_css">Username should be alphabets.</span>
                   </span>
                 </div>
 
@@ -69,31 +86,43 @@
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Email</span>
-                    <input placeholder="Email" id="useremail" required="true" type="email" name="email" ng-model="registerUser.email">
+                    <input placeholder="Email" id="useremail" required="true" type="email" name="email" ng-model="registerUser.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
                   </label>
-                  <span class="span-error" ng-show="registerform.email.$touched || registerform.$submitted && registerform.email.$invalid">
-                    <span ng-show="registerform.email.$touched && registerform.email.$invalid || registerform.email.$error.required" class="error_css">Email is Required</span>
-                  </span>
+                  <span class="span-error" ng-show="registerform.$submitted && registerform.email.$error.required"> Email is Required! </span>
+
+                  <span class="span-error" ng-show="registerform.email.$touched && registerform.email.$invalid && registerform.email.$error.pattern">Please Enter Valid Email</span>
+
                 </div>
 
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Mobile No</span>
-                    <input placeholder="Mobile No" id="phone" required="true" type="tel" name="phone" ng-model="registerUser.mobile">
+                    <input placeholder="Mobile No" id="phone" required="true" type="tel" name="phone" ng-model="registerUser.mobile" ng-pattern="mobilenoRE">
                   </label>
-                  <span class="span-error" ng-show="registerform.phone.$touched || registerform.$submitted && registerform.phone.$invalid">
-                    <span ng-show="registerform.phone.$touched && registerform.phone.$invalid || registerform.phone.$error.required" class="error_css">Mobile No is required</span>
+
+                  <span class="span-error" ng-show="!registerform.phone.$touched">
+                    <span class="error_css" ng-show="registerform.$submitted && registerform.phone.$error.required"> Mobile No is Required! </span>
+                  </span>
+
+                  <span class="span-error" ng-show="registerform.phone.$touched">
+                    <span ng-show="registerform.phone.$touched && registerform.phone.$error.pattern && registerform.phone.$invalid || registerform.phone.$error.required "
+                      class="error_css">Mobile No should be 10 digits.</span>
                   </span>
                 </div>
 
                 <div>
                   <label class="item item-input item-floating-label">
                     <span class="input-label">Password</span>
-                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="registerUser.passwd">
+                    <input placeholder="Password" id="userpassword" required="true" type="password" name="login_password" ng-model="registerUser.passwd"
+                      ng-pattern="passwordRE">
                   </label>
-                  <span class="span-error" ng-show="registerform.login_password.$touched || registerform.$submitted && registerform.login_password.$invalid">
-                    <span ng-show="registerform.login_password.$touched && registerform.login_password.$invalid || registerform.login_password.$error.required"
-                      class="error_css">Password required</span>
+                  <span class="span-error" ng-show="!registerform.login_password.$touched">
+                    <span class="error_css" ng-show="registerform.$submitted && registerform.login_password.$error.required"> Password is Required! </span>
+                  </span>
+
+                  <span class="span-error" ng-show="registerform.login_password.$touched">
+                    <span ng-show="registerform.login_password.$touched && registerform.login_password.$error.pattern && registerform.login_password.$invalid || registerform.login_password.$error.required "
+                      class="error_css">Password should be min 8 character, including number,alphabets and special character</span>
                   </span>
                 </div>
 
@@ -111,9 +140,8 @@
                   I accept the terms &amp; conditions.
                 </div>
                 <span class="span-error" ng-show="registerform.terms.$touched || registerform.$submitted && registerform.terms.$invalid">
-                    <span ng-show="registerform.terms.$touched && registerform.terms.$invalid || registerform.terms.$error.required"
-                      class="error_css">Terms & Conditions is required</span>
-                  </span>
+                  <span ng-show="registerform.terms.$touched && registerform.terms.$invalid || registerform.terms.$error.required" class="error_css">Terms & Conditions is required!</span>
+                </span>
 
                 <div class="btn-center">
                   <button class="button button-block btn-color-orange btn-size">
