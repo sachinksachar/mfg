@@ -1,4 +1,4 @@
-var app = angular.module('mfg', ['ionic', 'ionic-material', 'oc.lazyLoad','ion-floating-menu']);
+var app = angular.module('mfg', ['ionic', 'ionic-material', 'oc.lazyLoad','ion-floating-menu', "ngResource",'cera.ionicSuperPopup',]);
 
 app.run(function ($ionicPlatform, AuthService) {
     $ionicPlatform.ready(function () {

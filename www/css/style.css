@@ -226,7 +226,8 @@ margin-top:10px;
 }
 .span-error{
     color: red;
-    margin: 10px;
+    margin: 0px;
+    font-size: 13px ! important;
 }
 
 .nav_tabs { color: #000; border-bottom: none; }
@@ -267,7 +268,7 @@ margin-top:10px;
 }
 
 .tabs-striped.tabs-calm .tabs {
-    background-color: #fff;
+    background-color: #fff ! important;
     top: 20% ! important;
     border-bottom: none ! important;
     box-shadow: none ! important;
@@ -275,13 +276,13 @@ margin-top:10px;
 }
 .tabs-striped.tabs-calm .tab-item.tab-item-active, .tabs-striped.tabs-calm .tab-item.active, .tabs-striped.tabs-calm .tab-item.activated {
     margin-top: -2px;
-    color: #ff6700;
+    color: #ff6700 ! important;
     border-style: solid;
     border-width: 2px 0 0 0;
-    border-color: #ff6700;
+    border-color: #ff6700 ! important;
 }
 .tabs-striped.tabs-calm .tab-item {
-    color: #ff6700;
+    color: #ff6700 ! important;
 }
 .scroll-bar-indicator {
     background: rgb(255, 255, 255) ! important;
