@@ -54,15 +54,21 @@ angular.module('mfg').controller('newTeamCtrl', ['$http', '$scope', '$state', '$
           if($scope.team_members[teams][role] === undefined){
             $scope.team_members[teams][role] = []
           }
-          $scope.team_members[teams][role].push(code);
-          $scope.points = $scope.points - player_point;
           member_count_section = $scope.team_members[teams][role].length
           $scope.team_size = $scope.member_in_team($scope.team_members[teams])
           $scope.both_team_size = $scope.member_in_both_team($scope.team_members)
           $scope.condition_check = $scope.check_rules(member_count_section,role,teams,$scope.contestList)
-          $scope.player_visiblity = false;
-          if($scope.team_members <= $scope.contestList.rules[0].totalPlayers){
-
+          if($scope.condition_check){
+            if($scope.team_size <= $scope.contestList.rules[0].conditions.maxPlayerSingleTeam){
+              if($scope.both_team_size < $scope.contestList.rules[0].totalPlayers){
+                $scope.team_members[teams][role].push(code);
+                $scope.points = $scope.points - player_point;
+                member_count_section = $scope.team_members[teams][role].length
+                $scope.team_size = $scope.member_in_team($scope.team_members[teams])
+                $scope.both_team_size = $scope.member_in_both_team($scope.team_members)
+                $scope.condition_check = $scope.check_rules(member_count_section,role,teams,$scope.contestList)
+              }
+            }
           }
         }
         else{
@@ -82,9 +88,9 @@ angular.module('mfg').controller('newTeamCtrl', ['$http', '$scope', '$state', '$
       min = rules.rules[0].conditions.limits[role][0];
       max = rules.rules[0].conditions.limits[role][1];
       
-      if(member_count_section >= max)
+      if(member_count_section < max)
       {
-        return "Maximum of " + max + " player can be selected."
+        return true;
       }
           
     }
