@@ -53,9 +53,9 @@ angular.module('mfg').controller('loginCtrl', ['$http', '$scope', '$state', '$st
         method: "POST",
         data: $scope.registerUser,
         headers: { 'Content-Type': 'application/json' }
-      }).then(function (response) {
+      }).then(function (response) { debugger
 
-        if (response.status == 200) {
+        if (response.status == 201) {
           $window.localStorage['authKey'] = response.data.key;
           $window.localStorage['token'] = response.data.token;
           $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.token;
@@ -64,8 +64,6 @@ angular.module('mfg').controller('loginCtrl', ['$http', '$scope', '$state', '$st
         }
 
       }, function (error) {
-        debugger
-
         if (error.status == 400) {
           ionicSuperPopup.show("Error!", error.data.errors, "error");
         }
@@ -88,7 +86,7 @@ angular.module('mfg').controller('loginCtrl', ['$http', '$scope', '$state', '$st
     // Login starts from here
     $scope.user = {}
     $scope.Login = function (user) {
-      debugger;
+      
       $scope.loadingEvent();
 
       $http({
@@ -107,7 +105,7 @@ angular.module('mfg').controller('loginCtrl', ['$http', '$scope', '$state', '$st
 
         }
       }, function errorCallback(error) {
-        debugger
+        
         if (error.status == 400) {
           ionicSuperPopup.show("Error!", error.data.errors, "error");
         }

@@ -24,7 +24,6 @@
 
 
       $scope.logoutAction = function(){
-
         $ionicLoading.show({
           content: 'Loading',
           template: '<ion-spinner icon="lines" class="spinner-assertive"></ion-spinner>',
@@ -50,9 +49,17 @@
             $state.go('login');
           }, 1000)
          
-        }, function (error) {
-          
-    
+        }, function (error) { 
+          if(error.status == 401){
+            $window.localStorage.clear();
+            $ionicHistory.clearCache();
+            $ionicHistory.clearHistory();
+            
+            $timeout(function(){
+              $ionicLoading.hide()
+              $state.go('login');
+            }, 1000)
+          }
         });
       }
 
