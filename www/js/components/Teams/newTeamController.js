@@ -14,6 +14,7 @@ angular.module('mfg').controller('newTeamCtrl', ['$http', '$scope', '$state', '$
     $scope.team_members = {}
     $scope.team_members_count = {}
     $scope.player_visiblity = true;
+    $scope.selectedData={};
 
     $http({
       url: __env.apiUrl + '/api/cricket/squad/rules/' + $scope.version_id,
@@ -45,6 +46,7 @@ angular.module('mfg').controller('newTeamCtrl', ['$http', '$scope', '$state', '$
     });
 
     $scope.makeTeam = function(code, status, role,teams,player_point) {
+        
         $scope.team = {}
         if(status){
 
@@ -59,7 +61,7 @@ angular.module('mfg').controller('newTeamCtrl', ['$http', '$scope', '$state', '$
           $scope.both_team_size = $scope.member_in_both_team($scope.team_members)
           $scope.condition_check = $scope.check_rules(member_count_section,role,teams,$scope.contestList)
           if($scope.condition_check){
-            if($scope.team_size <= $scope.contestList.rules[0].conditions.maxPlayerSingleTeam){
+            if($scope.team_size < $scope.contestList.rules[0].conditions.maxPlayerSingleTeam){
               if($scope.both_team_size < $scope.contestList.rules[0].totalPlayers){
                 $scope.team_members[teams][role].push(code);
                 $scope.points = $scope.points - player_point;
@@ -87,7 +89,7 @@ angular.module('mfg').controller('newTeamCtrl', ['$http', '$scope', '$state', '$
     $scope.check_rules = function(member_count_section, role, team, rules){
       min = rules.rules[0].conditions.limits[role][0];
       max = rules.rules[0].conditions.limits[role][1];
-      
+      debugger;
       if(member_count_section < max)
       {
         return true;
