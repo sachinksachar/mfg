@@ -29,8 +29,8 @@
 
                 <ion-slide-box show-pager="false" on-slide-changed="slideChanged(index)" active-slide="activeSlide">
                     <ion-slide ng-repeat="squad in players.squad"  >
-                        <div ng-repeat="player in squad.players" >
-                            <div class="row" >
+                       
+                            <div class="row" ng-repeat="player in squad.players">
                                 <div class="col-md-20">
                                         <img src="img/arya.jpg" class="img-avatar">
                                 </div>
@@ -47,11 +47,11 @@
                                 </div>
                                 <div class="col-md-20">
                                     <label class="checkbox">
-                                        <input type="checkbox" ng-model="team[player.playerCode]" ng-change="makeTeam(player.playerCode,team[player.playerCode],squad.roleCode,player.team,8)" name="team[player.playerCode]" required />
+                                        <input type="checkbox" ng-model='selectedData[player.playerCode]' ng-change="makeTeam(player.playerCode,selectedData[player.playerCode],squad.roleCode,player.team,8)" name="checkbox_{{player.playerCode}}" id="checkbox_{{player.playerCode}}" required />
                                     </label>
                                 </div>
                             </div>
-                        </div>                     
+                                           
                     </ion-slide>
                 </ion-slide-box>
             </div>
